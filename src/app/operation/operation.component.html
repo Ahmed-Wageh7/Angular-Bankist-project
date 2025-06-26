@@ -1,0 +1,44 @@
+<section class="section" id="section--2" appRevealOnScroll>
+  <div class="section__title">
+    <h2 class="section__description">Operations</h2>
+    <h3 class="section__header">
+      Everything as simple as possible, but no simpler.
+    </h3>
+  </div>
+
+  <div class="operations">
+    <div class="operations__tab-container">
+      @for (tab of tabs; track tab.id) {
+      <button
+        class="btn operations__tab"
+        [ngClass]="[
+          'operations__tab--' + tab.id,
+          selectedTab === tab.id ? 'operations__tab--active' : ''
+        ]"
+        (click)="selectTab(tab.id)"
+      >
+        <span>0{{ tab.id }}</span
+        >{{ tab.title }}
+      </button>
+      }
+    </div>
+
+    @for (tab of tabs; track tab.id) {
+    <div
+      class="operations__content"
+      [ngClass]="[
+        'operations__content--' + tab.id,
+        selectedTab === tab.id ? 'operations__content--active' : ''
+      ]"
+    >
+      <div class="operations__icon" [ngClass]="'operations__icon--' + tab.id">
+        <svg>
+          <use [attr.xlink:href]="tab.icon"></use>
+        </svg>
+      </div>
+      <h5 class="operations__header">{{ tab.header }}</h5>
+      <p>{{ tab.content }}</p>
+    </div>
+    }
+  </div>
+</section>
